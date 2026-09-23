@@ -36,6 +36,17 @@ import com.coronado.tecsupfit.data.EstadoReserva
 import com.coronado.tecsupfit.data.Reserva
 import kotlin.collections.contains
 
+object Rutas {
+    const val INICIO = "inicio"
+    const val DETALLE = "detalle/{claseId}"
+    const val CONFIRMACION = "confirmacion/{claseId}/{horario}"
+    const val RESERVAS = "reservas"
+    const val RUTINAS = "rutinas"
+    const val PERFIL = "perfil"
+
+    fun detalle(claseId: String): String = "detalle/$claseId"
+    fun confirmacion(claseId: String, horario: String): String = "confirmacion/$claseId/$horario"
+}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TECSUPFitApp() {
