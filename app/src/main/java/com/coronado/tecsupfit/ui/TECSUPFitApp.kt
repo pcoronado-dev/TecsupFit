@@ -2,6 +2,7 @@ package com.coronado.tecsupfit.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
@@ -16,13 +17,19 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
@@ -34,6 +41,8 @@ import androidx.navigation.navArgument
 import com.coronado.tecsupfit.data.DatosTECSUPFit
 import com.coronado.tecsupfit.data.EstadoReserva
 import com.coronado.tecsupfit.data.Reserva
+import com.coronado.tecsupfit.ui.theme.VerdeClaroFondo
+import com.coronado.tecsupfit.ui.theme.VerdeOscuro
 import kotlin.collections.contains
 
 object Rutas {
@@ -67,7 +76,12 @@ fun TECSUPFitApp() {
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = { Text(tituloTopBar) },
+                title = { Text(tituloTopBar, color = Color.White, fontWeight = FontWeight.Bold) },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = VerdeOscuro,
+                    titleContentColor = Color.White,
+                    navigationIconContentColor = Color.White
+                ),
                 navigationIcon = {
                     if (!mostrarBottomBar && navController.previousBackStackEntry != null) {
                         IconButton(onClick = { navController.navigateUp() }) {
@@ -82,10 +96,16 @@ fun TECSUPFitApp() {
         },
         bottomBar = {
             if (mostrarBottomBar) {
-                TECSUPFitBottomBar(
-                    navController = navController,
-                    rutaActual = rutaActual
-                )
+                Surface(
+                    tonalElevation = 8.dp,
+                    shadowElevation = 8.dp,
+                    shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+                ) {
+                    TECSUPFitBottomBar(
+                        navController = navController,
+                        rutaActual = rutaActual
+                    )
+                }
             }
         }
     ) { innerPadding ->
@@ -188,22 +208,36 @@ fun TECSUPFitBottomBar(
         ElementoPestana("Perfil", com.coronado.tecsupfit.ui.Rutas.PERFIL, Icons.Filled.Person)
     )
 
-    NavigationBar {
+    NavigationBar(
+        containerColor = Color.White,
+        tonalElevation = 0.dp
+    ) {
         elementos.forEach { elemento ->
+            val seleccionado = rutaActual == elemento.ruta
             NavigationBarItem(
-                selected = rutaActual == elemento.ruta,
+                selected = seleccionado,
                 onClick = { navController.navegarAPestana(elemento.ruta) },
                 icon = {
                     Icon(
                         imageVector = elemento.icono,
-                        contentDescription = elemento.etiqueta
+                        contentDescription = elemento.etiqueta,
+                        tint = if (seleccionado) VerdeOscuro else MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
-                label = { Text(elemento.etiqueta) },
+                label = { 
+                    Text(
+                        text = elemento.etiqueta,
+                        fontSize = 11.sp,
+                        fontWeight = if (seleccionado) FontWeight.Bold else FontWeight.Normal,
+                        color = if (seleccionado) VerdeOscuro else MaterialTheme.colorScheme.onSurfaceVariant
+                    ) 
+                },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.primary,
-                    indicatorColor = MaterialTheme.colorScheme.primaryContainer,
-                    selectedTextColor = MaterialTheme.colorScheme.primary
+                    selectedIconColor = VerdeOscuro,
+                    unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    selectedTextColor = VerdeOscuro,
+                    unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    indicatorColor = VerdeClaroFondo
                 )
             )
         }

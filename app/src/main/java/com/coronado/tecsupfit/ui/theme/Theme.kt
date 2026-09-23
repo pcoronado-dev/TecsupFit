@@ -14,19 +14,38 @@ import androidx.compose.ui.platform.LocalContext
 
 private val LightColorScheme = lightColorScheme(
     primary = VerdeOscuro,
-    secondary = Naranja,
-    tertiary = VerdeClaro,
-    primaryContainer = VerdeSuave,
     onPrimary = Color.White,
-    onSecondary = Color.White
+    primaryContainer = VerdeClaroFondo,
+    onPrimaryContainer = VerdeOscuro,
+    secondary = VerdeOscuro,
+    onSecondary = Color.White,
+    secondaryContainer = GrisFondoTarjeta,
+    onSecondaryContainer = TextoPrincipal,
+    surface = Blanco,
+    onSurface = TextoPrincipal,
+    surfaceVariant = GrisFondoTarjeta,
+    onSurfaceVariant = TextoSecundario,
+    outline = BordeTarjeta,
+    background = Blanco,
+    onBackground = TextoPrincipal
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = VerdeClaro,
-    secondary = NaranjaClaro,
-    tertiary = VerdeSuave,
-    onPrimary = VerdeOscuro,
-    onSecondary = VerdeOscuro
+    primary = VerdeOscuro,
+    onPrimary = Color.White,
+    primaryContainer = VerdeClaroFondo,
+    onPrimaryContainer = VerdeOscuro,
+    secondary = VerdeOscuro,
+    onSecondary = Color.White,
+    secondaryContainer = GrisFondoTarjeta,
+    onSecondaryContainer = TextoPrincipal,
+    surface = Blanco,
+    onSurface = TextoPrincipal,
+    surfaceVariant = GrisFondoTarjeta,
+    onSurfaceVariant = TextoSecundario,
+    outline = BordeTarjeta,
+    background = Blanco,
+    onBackground = TextoPrincipal
 )
 
 @Composable
@@ -34,7 +53,7 @@ fun TECSUPFitTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+    val colorScheme = LightColorScheme // Force clean light design system as specified
 
     MaterialTheme(
         colorScheme = colorScheme,
