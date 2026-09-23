@@ -158,3 +158,48 @@ fun TECSUPFitApp() {
         }
     }
 }
+private fun tituloParaRuta(rutaActual: String?): String {
+    return when {
+        rutaActual?.startsWith("detalle/") == true -> "Detalle de clase"
+        rutaActual?.startsWith("confirmacion/") == true -> "Confirmar reserva"
+        rutaActual == com.coronado.tecsupfit.ui.Rutas.INICIO -> "Inicio"
+        rutaActual == com.coronado.tecsupfit.ui.Rutas.RESERVAS -> "Mis reservas"
+        rutaActual == com.coronado.tecsupfit.ui.Rutas.RUTINAS -> "Rutinas"
+        rutaActual == com.coronado.tecsupfit.ui.Rutas.PERFIL -> "Mi perfil"
+        else -> "TECSUPFit"
+    }
+}
+
+@Composable
+fun TECSUPFitBottomBar(
+    navController: NavController,
+    rutaActual: String?
+) {
+    val elementos = listOf(
+        ElementoPestana("Inicio", com.coronado.tecsupfit.ui.Rutas.INICIO, Icons.Filled.Home),
+        ElementoPestana("Reservas", com.coronado.tecsupfit.ui.Rutas.RESERVAS, Icons.Filled.DateRange),
+        ElementoPestana("Rutinas", com.coronado.tecsupfit.ui.Rutas.RUTINAS, Icons.Filled.FitnessCenter),
+        ElementoPestana("Perfil", com.coronado.tecsupfit.ui.Rutas.PERFIL, Icons.Filled.Person)
+    )
+
+    NavigationBar {
+        elementos.forEach { elemento ->
+            NavigationBarItem(
+                selected = rutaActual == elemento.ruta,
+                onClick = { navController.navegarAPestana(elemento.ruta) },
+                icon = {
+                    Icon(
+                        imageVector = elemento.icono,
+                        contentDescription = elemento.etiqueta
+                    )
+                },
+                label = { Text(elemento.etiqueta) },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = MaterialTheme.colorScheme.primary,
+                    indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                    selectedTextColor = MaterialTheme.colorScheme.primary
+                )
+            )
+        }
+    }
+}
