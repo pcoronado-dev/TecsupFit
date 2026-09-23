@@ -203,3 +203,17 @@ fun TECSUPFitBottomBar(
         }
     }
 }
+
+private data class ElementoPestana(
+    val etiqueta: String,
+    val ruta: String,
+    val icono: androidx.compose.ui.graphics.vector.ImageVector
+)
+
+private fun NavController.navegarAPestana(ruta: String) {
+    navigate(ruta) {
+        popUpTo(graph.findStartDestination().id) { saveState = true }
+        launchSingleTop = true
+        restoreState = true
+    }
+}
