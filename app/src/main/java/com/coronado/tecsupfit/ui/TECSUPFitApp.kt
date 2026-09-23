@@ -144,7 +144,13 @@ fun TECSUPFitApp() {
             composable(Rutas.RESERVAS) {
                 ReservasScreen(
                     reservas = reservas.toList(),
-                    onVerClases = { navController.navegarAPestana(Rutas.INICIO) }
+                    onVerClases = { navController.navegarAPestana(Rutas.INICIO) },
+                    onCancelarReserva = { reservaACancelar ->
+                        val index = reservas.indexOf(reservaACancelar)
+                        if (index != -1) {
+                            reservas[index] = reservaACancelar.copy(estado = EstadoReserva.CANCELADA)
+                        }
+                    }
                 )
             }
 

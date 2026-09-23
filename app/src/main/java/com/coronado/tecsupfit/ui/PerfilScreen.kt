@@ -25,6 +25,7 @@ fun PerfilScreen(
     modifier: Modifier = Modifier
 ) {
     val clasesTomadas = reservas.count { it.estado == EstadoReserva.COMPLETADA }
+    val reservasActivas = reservas.count { it.estado == EstadoReserva.CONFIRMADA }
 
     Column(
         modifier = modifier
@@ -80,7 +81,7 @@ fun PerfilScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         TarjetaEstadistica(
-            valor = "${reservas.size}",
+            valor = "$reservasActivas",
             etiqueta = "Reservas activas",
             modifier = Modifier.fillMaxWidth()
         )

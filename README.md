@@ -1,0 +1,1 @@
+ Prompt1: Tengo una app Compose de reservas de clases de gimnasio. Mi modelo Reservasolo tiene los estados Confirmada y Completada. Quiero que el usuario pueda cancelar una reserva confirmada. Cual es la forma mas simple de agregar un estado de cancelacion al enum EstadoReserva sin usar ViewModel?
