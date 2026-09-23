@@ -46,10 +46,30 @@ object DatosTECSUPFit {
     )
 
     val rutinas = listOf(
-        Rutina("Rutina Full Body", "30 min", "3 rondas", "Gana fuerza general con 8 ejercicios basicos."),
-        Rutina("Quema Grasa HIIT", "20 min", "4 rondas", "Intervalos intensos para acelerar tu metabolismo."),
-        Rutina("Core y Equilibrio", "25 min", "2 rondas", "Fortalece tu abdomen y mejora tu estabilidad."),
-        Rutina("Lower Body", "35 min", "3 rondas", "Trabaja piernas y gluteos con foco en resistencia.")
+        Rutina(
+            "Rutina Full Body",
+            "30 min",
+            "3 rondas",
+            "Gana fuerza general con 8 ejercicios basicos."
+        ),
+        Rutina(
+            "Quema Grasa HIIT",
+            "20 min",
+            "4 rondas",
+            "Intervalos intensos para acelerar tu metabolismo."
+        ),
+        Rutina(
+            "Core y Equilibrio",
+            "25 min",
+            "2 rondas",
+            "Fortalece tu abdomen y mejora tu estabilidad."
+        ),
+        Rutina(
+            "Lower Body",
+            "35 min",
+            "3 rondas",
+            "Trabaja piernas y gluteos con foco en resistencia."
+        )
     )
 
     val nombreUsuario = "Piero Alexander Coronado Quispe"
@@ -58,11 +78,10 @@ object DatosTECSUPFit {
 
     fun buscarClase(id: String): Clase? = clases.firstOrNull { it.id == id }
 
-
+}
     data class Rutina(
         val nombre: String,
         val duracion: String,
         val rondas: String,
         val descripcion: String
     )
-}
