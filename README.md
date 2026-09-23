@@ -65,3 +65,7 @@
  - Jerarquía visual clara: header → contenido con scroll → bottom nav fijo
 
  Aplica estos estilos manteniendo la estructura y funcionalidad de mi código actual, solo actualizando colores, tipografía, espaciados, bordes y componentes visuales para que coincidan con este diseño.
+
+ <img width="340" height="776" alt="image" src="https://github.com/user-attachments/assets/a2dc7a8c-137f-432e-b022-6715f35999a4" />
+ <img width="342" height="777" alt="image" src="https://github.com/user-attachments/assets/9f6cdc94-4e93-49e1-a445-ed93c8cc7db5" />
+
