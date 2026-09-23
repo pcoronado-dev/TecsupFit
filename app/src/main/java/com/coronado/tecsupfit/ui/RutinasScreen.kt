@@ -19,9 +19,6 @@ import androidx.compose.ui.unit.dp
 import com.coronado.tecsupfit.data.DatosTECSUPFit
 import com.coronado.tecsupfit.data.Rutina
 
-/**
- * Rutinas: listado simple de rutinas de entrenamiento.
- */
 @Composable
 fun RutinasScreen(modifier: Modifier = Modifier) {
     LazyColumn(
