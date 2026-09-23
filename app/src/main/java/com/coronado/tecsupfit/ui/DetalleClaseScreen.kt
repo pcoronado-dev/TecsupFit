@@ -25,11 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.coronado.tecsupfit.data.Clase
 
-/**
- * Detalle de clase: recibe la clase elegida por parametro de navegacion.
- * La seleccion de horario se comporta como un RadioButton unico,
- * aunque visualmente se muestra como chips.
- */
+
 @Composable
 fun DetalleClaseScreen(
     clase: Clase?,
